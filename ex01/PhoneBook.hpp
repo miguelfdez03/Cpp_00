@@ -6,7 +6,13 @@
 class PhoneBook
 {
 private:
-    Contact _contacts[8];
+    enum
+    {
+        kMaxContacts = 8,
+        kColumnWidth = 10
+    };
+
+    Contact _contacts[kMaxContacts];
     int     _count;
     int     _nextIndex;
 

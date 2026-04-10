@@ -1,4 +1,3 @@
-#include "Contact.hpp"
 #include "PhoneBook.hpp"
 
 #include <cctype>
@@ -6,6 +5,12 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+
+namespace
+{
+const std::size_t kPhoneDigits = 9;
+const int         kPhoneBookCapacity = 8;
+}
 
 static bool isAsciiAlnum(const std::string &value)
 {
@@ -21,7 +26,7 @@ static bool isAsciiAlnum(const std::string &value)
 
 static bool isNineDigits(const std::string &value)
 {
-    if (value.length() != 9)
+    if (value.length() != kPhoneDigits)
         return false;
     for (std::string::size_type i = 0; i < value.length(); ++i)
     {
@@ -80,13 +85,10 @@ static bool getIndexFromInput(const std::string &input, int &index)
     return true;
 }
 
-static std::string toUpperAscii(const std::string &text)
+static void toUpperAsciiInPlace(std::string &text)
 {
-    std::string upper = text;
-
-    for (std::string::size_type i = 0; i < upper.length(); ++i)
-        upper[i] = static_cast<char>(std::toupper(static_cast<unsigned char>(upper[i])));
-    return upper;
+    for (std::string::size_type i = 0; i < text.length(); ++i)
+        text[i] = static_cast<char>(std::toupper(static_cast<unsigned char>(text[i])));
 }
 
 static void handleAdd(PhoneBook &phoneBook)
@@ -98,12 +100,12 @@ static void handleAdd(PhoneBook &phoneBook)
     std::string darkestSecret;
     std::string confirmation;
 
-    if (phoneBook.getCount() >= 8)
+    if (phoneBook.getCount() >= kPhoneBookCapacity)
     {
         std::cout << "The phonebook is full. If you create a new contact, the oldest one will be deleted. Continue? (y/n): ";
         if (!std::getline(std::cin, confirmation))
             return;
-        confirmation = toUpperAscii(confirmation);
+        toUpperAsciiInPlace(confirmation);
         if (!(confirmation == "Y" || confirmation == "YES"))
         {
             std::cout << "Add cancelled." << std::endl;
@@ -158,7 +160,8 @@ int main(void)
         std::cout << "Enter command (ADD, SEARCH, EXIT): ";
         if (!std::getline(std::cin, command))
             break;
-        normalizedCommand = toUpperAscii(command);
+        normalizedCommand = command;
+        toUpperAsciiInPlace(normalizedCommand);
 
         if (normalizedCommand == "ADD")
             handleAdd(phoneBook);

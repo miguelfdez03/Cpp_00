@@ -13,32 +13,34 @@ PhoneBook::~PhoneBook(void)
 
 std::string PhoneBook::formatColumn(const std::string &text)
 {
-    if (text.length() > 10)
-        return text.substr(0, 9) + ".";
+    if (text.length() > kColumnWidth)
+        return text.substr(0, kColumnWidth - 1) + ".";
     return text;
 }
 
 void PhoneBook::addContact(const Contact &contact)
 {
     _contacts[_nextIndex] = contact;
-    _nextIndex = (_nextIndex + 1) % 8;
-    if (_count < 8)
+    _nextIndex = (_nextIndex + 1) % kMaxContacts;
+    if (_count < kMaxContacts)
         ++_count;
 }
 
 void PhoneBook::displayList(void) const
 {
-    std::cout << std::setw(10) << "index" << "|"
-              << std::setw(10) << "first name" << "|"
-              << std::setw(10) << "last name" << "|"
-              << std::setw(10) << "nickname" << std::endl;
+    std::cout << std::setw(kColumnWidth) << "index" << "|"
+              << std::setw(kColumnWidth) << "first name" << "|"
+              << std::setw(kColumnWidth) << "last name" << "|"
+              << std::setw(kColumnWidth) << "nickname" << std::endl;
 
     for (int i = 0; i < _count; ++i)
     {
-        std::cout << std::setw(10) << i << "|"
-                  << std::setw(10) << formatColumn(_contacts[i].getFirstName()) << "|"
-                  << std::setw(10) << formatColumn(_contacts[i].getLastName()) << "|"
-                  << std::setw(10) << formatColumn(_contacts[i].getNickname()) << std::endl;
+        const Contact &contact = _contacts[i];
+
+        std::cout << std::setw(kColumnWidth) << i << "|"
+                  << std::setw(kColumnWidth) << formatColumn(contact.getFirstName()) << "|"
+                  << std::setw(kColumnWidth) << formatColumn(contact.getLastName()) << "|"
+                  << std::setw(kColumnWidth) << formatColumn(contact.getNickname()) << std::endl;
     }
 }
 
