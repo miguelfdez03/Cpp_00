@@ -18,7 +18,7 @@ static bool isAsciiAlnum(const std::string &value)
     {
         unsigned char c = static_cast<unsigned char>(value[i]);
 
-        if (c > 127 || !(std::isalnum(c) || c == ' ' || c == '\t'))
+        if (c > 127 || !(std::isalnum(c) || c == ' '))
             return false;
     }
     return true;
@@ -50,7 +50,7 @@ static bool promptAsciiAlnumField(const std::string &label, std::string &value)
         }
         if (!isAsciiAlnum(value))
         {
-            std::cout << "Only ASCII letters, digits, spaces and tabs are allowed." << std::endl;
+            std::cout << "Only ASCII letters, digits, spaces are allowed." << std::endl;
             continue;
         }
         return true;
