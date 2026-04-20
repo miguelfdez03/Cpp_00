@@ -6,12 +6,6 @@
 #include <sstream>
 #include <string>
 
-namespace
-{
-const std::size_t kPhoneDigits = 9;
-const int         kPhoneBookCapacity = 8;
-}
-
 static bool isAsciiAlnum(const std::string &value)
 {
     for (std::string::size_type i = 0; i < value.length(); ++i)
@@ -26,7 +20,7 @@ static bool isAsciiAlnum(const std::string &value)
 
 static bool isNineDigits(const std::string &value)
 {
-    if (value.length() != kPhoneDigits)
+    if (value.length() != 9)
         return false;
     for (std::string::size_type i = 0; i < value.length(); ++i)
     {
@@ -100,7 +94,7 @@ static void handleAdd(PhoneBook &phoneBook)
     std::string darkestSecret;
     std::string confirmation;
 
-    if (phoneBook.getCount() >= kPhoneBookCapacity)
+    if (phoneBook.getCount() >= 8)
     {
         std::cout << "The phonebook is full. If you create a new contact, the oldest one will be deleted. Continue? (y/n): ";
         if (!std::getline(std::cin, confirmation))
