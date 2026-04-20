@@ -51,6 +51,12 @@ bool PhoneBook::isValidIndex(int index) const
 
 void PhoneBook::displayContact(int index) const
 {
+    if (!isValidIndex(index))
+    {
+        std::cerr << "Invalid contact index." << std::endl;
+        return;
+    }
+
     std::cout << "First name: " << _contacts[index].getFirstName() << std::endl;
     std::cout << "Last name: " << _contacts[index].getLastName() << std::endl;
     std::cout << "Nickname: " << _contacts[index].getNickname() << std::endl;
