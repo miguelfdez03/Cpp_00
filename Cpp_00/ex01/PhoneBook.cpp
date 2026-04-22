@@ -31,7 +31,7 @@ void PhoneBook::displayList(void) const
     std::cout << std::setw(kColumnWidth) << "index" << "|"
               << std::setw(kColumnWidth) << "first name" << "|"
               << std::setw(kColumnWidth) << "last name" << "|"
-              << std::setw(kColumnWidth) << "nickname" << std::endl;
+              << std::setw(kColumnWidth) << "nickname" << "|" << std::endl;
 
     for (int i = 0; i < _count; ++i)
     {
@@ -40,7 +40,7 @@ void PhoneBook::displayList(void) const
         std::cout << std::setw(kColumnWidth) << i << "|"
                   << std::setw(kColumnWidth) << formatColumn(contact.getFirstName()) << "|"
                   << std::setw(kColumnWidth) << formatColumn(contact.getLastName()) << "|"
-                  << std::setw(kColumnWidth) << formatColumn(contact.getNickname()) << std::endl;
+                  << std::setw(kColumnWidth) << formatColumn(contact.getNickname()) << "|" << std::endl;
     }
 }
 
