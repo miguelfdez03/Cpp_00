@@ -1,4 +1,4 @@
-NAME = ex03
+NAME = Weapon
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

@@ -1,4 +1,4 @@
-NAME = ex04
+NAME = Replace
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

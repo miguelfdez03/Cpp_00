@@ -1,4 +1,4 @@
-NAME = ex02
+NAME = brain
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
