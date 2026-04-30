@@ -1,12 +1,14 @@
 #include "../include/Fixed.hpp"
 
-int main()
+int	main(void)
 {
-    Fixed a;
-    Fixed b(a);
-    Fixed c;
-    c = b;
+	Fixed	a;
+	Fixed	c;
 
-    (void)a; (void)b; (void)c; // placeholder to avoid unused warnings
-    return 0;
+	Fixed b(a);
+	c = b;
+	(void)a;
+	(void)b;
+	(void)c;
+	return (0);
 }
