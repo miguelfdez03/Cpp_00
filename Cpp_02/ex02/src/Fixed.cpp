@@ -14,9 +14,9 @@ Fixed::Fixed(int const n)
 
 Fixed::Fixed(float const f)
 {
-	std::cout << "Float constructor called" << std::endl;
 	float	scaled;
 
+	std::cout << "Float constructor called" << std::endl;
 	scaled = f * (1 << _fractBits);
 	if (f >= 0)
 		this->_fixedPointNumber = static_cast<int>(scaled + 0.5f);
@@ -110,6 +110,11 @@ Fixed Fixed::operator*(Fixed const &other) const
 
 Fixed Fixed::operator/(Fixed const &other) const
 {
+	if (other._fixedPointNumber == 0)
+	{
+		std::cerr << "Error: Division by zero is forbidden" << std::endl;
+		return (-1);
+	}
 	return (Fixed(this->toFloat() / other.toFloat()));
 }
 
