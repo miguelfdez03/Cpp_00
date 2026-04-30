@@ -15,8 +15,8 @@ public:
 	Fixed &operator=(Fixed const &other);
 	~Fixed();
 
-	int getfixedPointNumber(void) const;
-	void setfixedPointNumber(int const fixedPointNumber);
+	int getRawBits(void) const;
+	void setRawBits(int const raw);
 };
 
 #endif

@@ -3,13 +3,15 @@
 
 int	main(void)
 {
-	Fixed	c;
+	Fixed	a;
 
-	Fixed a(2);
-	Fixed b(3);
-	c = a * b;
-	std::cout << "a = " << a << std::endl;
-	std::cout << "b = " << b << std::endl;
-	std::cout << "c = a * b = " << c << std::endl;
+	Fixed const b(Fixed(5.05f) * Fixed(2));
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max(a, b) << std::endl;
 	return (0);
 }
