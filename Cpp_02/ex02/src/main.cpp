@@ -1,15 +1,17 @@
 #include "../include/Fixed.hpp"
 #include <iostream>
 
-int main()
+int	main(void)
 {
-    Fixed a(2);
-    Fixed b(3);
-    Fixed c = a * b;
+	Fixed	a;
 
-    std::cout << "a = " << a << std::endl;
-    std::cout << "b = " << b << std::endl;
-    std::cout << "c = a * b = " << c << std::endl;
-
-    return 0;
+	Fixed const b(Fixed(5.05f) * Fixed(2));
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max(a, b) << std::endl;
+	return (0);
 }
